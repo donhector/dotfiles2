@@ -1,0 +1,38 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Hector Molina
+	email = donhector@gmail.com
+	signingkey = EC43C157400802A0
+    username = donhector
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = "code --wait $MERGED"
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = "code --wait --diff  $LOCAL $REMOTE"
+[core]
+	editor = code --wait
+# [alias]
+# 	cm = !git add -A && git commit -m
+[commit]
+	gpgsign = true
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[gpg]
+	program = gpg
+
+# Added to fix some antigen plugin issues
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+    
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/

@@ -1,0 +1,8 @@
+golang 1.16
+kubectl 1.20.4
+jq 
+yq 4.0.0
+fzf 0.25.1
+terraform 0.14.7
+python 3.9.2
+nodejs 15.11.0

@@ -1,0 +1,10 @@
+{
+    "terminal.integrated.fontFamily": "Cascadia Code PL",
+    "editor.fontLigatures": true,
+    "editor.fontFamily": "'Cascadia Code PL', Consolas, 'Courier New', monospace",
+    "telemetry.enableTelemetry": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "editor.minimap.enabled": false
+}
