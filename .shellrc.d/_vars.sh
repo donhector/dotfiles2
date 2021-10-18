@@ -1,5 +1,9 @@
 ### SHELL agnostic vars
 
+# Encoding stuff for the terminal
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Colors
 BLACK=$(tput setaf 0)
 RED=$(tput setaf 1)

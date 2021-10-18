@@ -117,8 +117,12 @@ if ! shopt -oq posix; then
 fi
 
 
+##########################################################
+# Load my own stuff: shell agnostic + bash customizations
+##########################################################
+
 ### Load all common files from ~/.shellrc.d directory
-if [ -d $HOME/.shellrc.d ]; then
+if [ -d "$HOME/.shellrc.d" ]; then
   for file in $HOME/.shellrc.d/*.sh; do
     source $file
   done

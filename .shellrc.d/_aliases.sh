@@ -80,6 +80,7 @@ alias yaml="python3 -c 'import json, sys, yaml; y=yaml.safe_load(sys.stdin.read(
 # Download audio from Youtube
 alias ymp3="youtube-dl --extract-audio --audio-format mp3"
 
+alias speedtest='wget -O /dev/null http://speedtest.london.linode.com/100MB-london.bin'
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
     echo "Loading WSL specific aliases..."
