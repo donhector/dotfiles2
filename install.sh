@@ -23,10 +23,11 @@ if [ -n "${WSL_DISTRO_NAME}" ]; then
     # Symlink vscode settings
     VSCODE_USER_FOLDER=$(wslpath $(get_win_var %APPDATA%/Code/User))
     if [ -d ${VSCODE_USER_FOLDER} ]; then 
-        echo "Symlinking VSCode user files..."
-        ln -sfnv "${PWD}/.config/Code/User/settings.json" "${VSCODE_USER_FOLDER}/settings.json"
-        ln -sfnv "${PWD}/.config/Code/User/keybindings.json" "${VSCODE_USER_FOLDER}/keybindings.json"
+        echo "Copying VSCode user setting files..."
+        cp -fv "${PWD}/.config/Code/User/settings.json" "${VSCODE_USER_FOLDER}/settings.json"
+        cp -fv "${PWD}/.config/Code/User/keybindings.json" "${VSCODE_USER_FOLDER}/keybindings.json"
 
+        echo "Installing VSCode extensions..."
         cat "${PWD}/.config/Code/User/extensions.txt | while read extension"
         do
           code --install-extension ${extension} --force
@@ -38,8 +39,8 @@ if [ -n "${WSL_DISTRO_NAME}" ]; then
     # Symlink Windows Terminal settings
     WINTERM_USER_FOLDER=$(wslpath $(get_win_var %LOCALAPPDATA%/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/RoamingState))
     if [ -d ${WINTERM_USER_FOLDER} ]; then 
-        echo "Symlinking Windows Terminal user settings.json..."
-        ln -sfnv "${PWD}/.wsl2/WindowsTerminal/settings.json" "${WINTERM_USER_FOLDER}/settings.json"
+        echo "Copying Windows Terminal user settings.json..."
+        cp -fv "${PWD}/.wsl2/WindowsTerminal/settings.json" "${WINTERM_USER_FOLDER}/settings.json"
     else
         echo "No Windows Terminal installation found on Windows host."
     fi
@@ -49,4 +50,4 @@ fi
 
 echo "Installing dotfiles..."
 echo TODO
-#link
+link
