@@ -28,7 +28,7 @@ if [ -n "${WSL_DISTRO_NAME}" ]; then
         cp -fv "${PWD}/.config/Code/User/keybindings.json" "${VSCODE_USER_FOLDER}/keybindings.json"
 
         echo "Installing VSCode extensions..."
-        cat "${PWD}/.config/Code/User/extensions.txt | while read extension"
+        cat "${PWD}/.config/Code/User/extensions.txt" | while read extension
         do
           code --install-extension ${extension} --force
         done
