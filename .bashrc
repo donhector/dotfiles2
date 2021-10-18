@@ -134,3 +134,13 @@ if [ -d "$HOME/.bashrc.d" ]; then
         . "${file}"
     done
 fi
+
+# Load SSH keys (needs 'apt install keychain')
+if ! command -v keychain &> /dev/null
+then
+    echo "keychain could not be found. Did you do 'apt install keychain'?"
+    exit
+else
+    /usr/bin/keychain -q --nogui $HOME/.ssh/id_rsa
+    source $HOME/.keychain/$HOST-sh
+fi

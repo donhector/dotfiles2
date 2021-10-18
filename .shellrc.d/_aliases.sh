@@ -18,6 +18,7 @@ alias .......='cd ../../../../../..'
 # Process related aliases
 alias k9='kill -9'
 alias ps='ps -aux'
+alias psf='ps -faux'
 alias ns='netstat -tulpn'
 alias j='jobs -l'
 
@@ -80,7 +81,13 @@ alias yaml="python3 -c 'import json, sys, yaml; y=yaml.safe_load(sys.stdin.read(
 # Download audio from Youtube
 alias ymp3="youtube-dl --extract-audio --audio-format mp3"
 
+# Speed test
 alias speedtest='wget -O /dev/null http://speedtest.london.linode.com/100MB-london.bin'
+
+# Useful SSH Key aliases
+alias keys='for key in ~/.ssh/id_*; do ssh-keygen -l -f "${key}"; done | uniq'
+alias keypair="ssh-keygen -t ed25519 -C ${USER}@${HOST}"
+
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
     echo "Loading WSL specific aliases..."
