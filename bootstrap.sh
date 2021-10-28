@@ -9,11 +9,14 @@ sudo apt install -y --no-install-recommends \
     tree \
     htop \
     iotop \
+    iperf \
     dnsutils \
     whois \
     wget \
     curl \
-    git
+    git \
+    bash-completion \
+    ncdu
 
 
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
@@ -21,40 +24,21 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githu
 sudo apt update
 sudo apt install gh
 
-
-# Install zsh and set it as default shell
-sudo apt install -y zsh
-chsh -s $(which zsh)
-
-# Download Antigen, the plugin manager for zsh.
-curl -L git.io/antigen > ~/antigen.zsh
-
-
-
-################################
-# asdf setup
-################################
-
-# # Deps for python plugin (ie: pyenv deps)
-# sudo apt install -y --no-install-recommends \
-#     make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
-#     get curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-
-# # Deps for nodejs
-# sudo apt install -y --no-install-recommends dirmngr gpg curl
-# bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
-
-# PLUGINS=( golang nodejs python )
-
-# if [ -f $HOME/.asdf/asdf.sh ]; then
-#     for plugin in "${PLUGINS[@]}"; do
-#         installed=$(asdf plugin list)
-#         echo "${installed}" | grep -q ${plugin} && \
-#             (
-#                 echo Installing "${plugin}" asdf plugin; \
-#                 asdf plugin-add ${plugin}; \
-#                 asdf install ${plugin} latest; \
-#                 asdf global ${plugin} latest;
-#             )
-#     done
-# fi
+while true
+do
+    read -r -p "Do you want to setup 'zsh' as your default shell? [y/n] " input
+    case $input in
+        [yY])
+            # Install zsh and set it as default shell
+            sudo apt install -ys zsh
+            chsh -s $(which zsh)
+            break
+            ;;
+        [nN])
+            break
+            ;;
+        *)
+            echo "Please answer yes or no..."
+            ;;
+    esac
+done

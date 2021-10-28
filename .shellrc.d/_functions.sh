@@ -169,3 +169,24 @@ function hr {
 function get_win_var {
     cmd.exe /c "echo ${1}" 2> /dev/null | sed -e 's/\r//g'
 }
+
+# Enhanced git diff using bat
+function gitdiff() {
+    git diff --name-only --diff-filter=d | xargs bat --diff
+}
+
+# Interactively get latest release assest(s) from Github (fzf powered)
+function gdlr {
+    local project="${1:?'User/repo combination must be provided. Ex: sharkdp/fd'}"
+    curl -s https://api.github.com/repos/${project}/releases/latest | grep "browser_download_url" | cut -d '"' -f 4 | fzf -m | wget -i -
+}
+
+# Enhanced tail -f output
+function tailf {
+    tail -f "$@" | bat --paging=never -l log
+}
+
+# Intereactively select the process(es) to kill
+function k9z {
+    ps -ef | fzf --reverse -m | awk '{print \$2}' | xargs kill -9
+}

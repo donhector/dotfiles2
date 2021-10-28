@@ -10,7 +10,6 @@ link () {
   done
 }
 
-
 echo "Checking OS environment..."
 
 # Windows Subsystem for Linux specific stuff
@@ -49,5 +48,4 @@ fi
 
 
 echo "Installing dotfiles..."
-echo TODO
 link

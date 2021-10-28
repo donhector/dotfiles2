@@ -16,11 +16,11 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
 # Process related aliases
-alias k9='kill -9'
 alias ps='ps -aux'
 alias psf='ps -faux'
 alias ns='netstat -tulpn'
 alias j='jobs -l'
+alias k9='kill -9'
 
 alias sudo='sudo ' ## Allow aliases to be sudo’ed
 alias watch='watch ' ## Allow aliases to be watched
@@ -32,6 +32,9 @@ alias nowdate='date +"%d-%m-%Y"'
 
 # Show PATH as lines
 alias path='echo -e ${PATH//:/\\n}'
+
+# Show environment sorted
+alias envs='env | sort'
 
 # File related
 alias mkdir='mkdir -pv'
@@ -51,7 +54,7 @@ alias perms="stat -c '%A %a %n UID (%u/%U) GID (%g/%G)'"
 # Make unified diff syntax the default
 alias diff="diff --color -u"
 
-alias tailf='tail -f'
+#alias tailf='tail -f'
 alias df='df -Ph'
 alias du='du -h'
 alias open='xdg-open'
@@ -90,7 +93,6 @@ alias keypair="ssh-keygen -t ed25519 -C ${USER}@${HOST}"
 
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
-    echo "Loading WSL specific aliases..."
     # This is specific to WSL 2. If the WSL 2 VM goes rogue and decides not to free
     # up memory, this command will free your memory after about 20-30 seconds.
     #   Details: https://github.com/microsoft/WSL/issues/4166#issuecomment-628493643

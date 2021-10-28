@@ -31,8 +31,8 @@
 	program = gpg
 
 # Added to fix some antigen plugin issues
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+# [url "git@github.com:"]
+#     insteadOf = https://github.com/
     
-[url "git@gitlab.com:"]
-    insteadOf = https://gitlab.com/
+# [url "git@gitlab.com:"]
+#     insteadOf = https://gitlab.com/

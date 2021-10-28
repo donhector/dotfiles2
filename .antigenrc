@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
@@ -22,13 +24,17 @@ antigen bundle aws
 # fi
 
 # Bundles from zsh-users repo
-antigen bundle zsh-users/zsh-syntax-highlighting
+#antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
-# adds fzf **<Tab> completion for several common commands such as git, docker, kubectl, systemcl, make and yarn 
-antigen bundle chitoku-k/fzf-zsh-completions
+# Additonal bundles
+# adds fzf <trigger><TAB> completion for almost everything
+antigen bundle Aloxaf/fzf-tab
+antigen bundle zdharma/fast-syntax-highlighting
+antigen bundle wfxr/forgit
+#antigen bundle chitoku-k/fzf-zsh-completions
 
 # select zsh theme
 antigen theme candy

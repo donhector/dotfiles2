@@ -1,0 +1,1 @@
+## Bash specific aliases
