@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
 	name = Hector Molina
-	email = donhector@gmail.com
+	email = 2475379+donhector@users.noreply.github.com
 	signingkey = EC43C157400802A0
     username = donhector
 [merge]
@@ -16,8 +16,8 @@
 	editor = code --wait
 # [alias]
 # 	cm = !git add -A && git commit -m
-[commit]
-	gpgsign = true
+# [commit]
+# 	gpgsign = true
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
