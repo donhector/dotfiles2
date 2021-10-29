@@ -14,4 +14,4 @@ function uninstall_ohmybash {
 [ ! -d ~/.oh-my-bash ] && install_ohmybash
 
 # Load my oh-my-bash settings
-[ -f ~/.ohmybash ] && . ~/.ohmybash
+[ -f ~/.ohmybash ] && source ~/.ohmybash

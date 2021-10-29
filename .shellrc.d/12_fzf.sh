@@ -49,17 +49,17 @@ export FZF_CTRL_T_COMMAND="fd ${FD_OPTS}"
 export FZF_ALT_C_COMMAND="fd ${FD_OPTS} --type d"
 export FZF_DEFAULT_COMMAND="${FZF_CTRL_T_COMMAND}"
 export FZF_COMPLETION_TRIGGER='\'
-export FZF_DEFAULT_OPTS="
-    --height 80% \
-    --layout reverse \
-    --multi \
-    --cycle \
-    --preview-window hidden:60%:wrap \
-    --info inline \
-    --bind 'shift-up:preview-page-up' \
-    --bind 'shift-down:preview-page-down' \
-    --bind 'ctrl-a:select-all' \
-    --bind 'ctrl-o:execute(code {+})+cancel' \
-    --bind '?:toggle-preview' \
-    --preview '([[ -f {} ]] && (bat --style=numbers --color=always --line-range :500 {} || cat {} | head -300)) || ([[ -d {} ]] && (tree -aC -I .git {} | less)) || echo {} 2> /dev/null | head -200' \
-    "
+export FZF_DEFAULT_OPTS="\
+  --height 80% \
+  --layout reverse \
+  --multi \
+  --cycle \
+  --preview-window hidden:60%:wrap \
+  --info inline \
+  --bind 'shift-up:preview-page-up' \
+  --bind 'shift-down:preview-page-down' \
+  --bind 'ctrl-a:select-all' \
+  --bind 'ctrl-o:execute(code {+})+cancel' \
+  --bind '?:toggle-preview' \
+  --preview '([[ -f {} ]] && (bat --style=numbers --color=always --line-range :500 {} || cat {} | head -300)) || ([[ -d {} ]] && (tree -aC -I .git {} | less)) || echo {} 2> /dev/null | head -200' \
+  "

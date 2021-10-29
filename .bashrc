@@ -123,15 +123,13 @@ fi
 ### Load shell agnostic files from ~/.shellrc.d directory
 if [ -d "$HOME/.shellrc.d" ]; then
   for file in $HOME/.shellrc.d/*.sh; do
-    #echo "Sourcing $file"
-    . "${file}"
+    source "${file}"
   done
 fi
 
 ### Load files from ~/.bashrc.d directory
 if [ -d "$HOME/.bashrc.d" ]; then
   for file in ~/.bashrc.d/*.bash ; do
-    #echo "Sourcing $file"
-    . "${file}"
+    source "${file}"
   done
 fi

@@ -3,25 +3,24 @@
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
+# select zsh theme
+antigen theme candy
+
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
 antigen bundle pip
 antigen bundle pipenv
-antigen bundle fzf
 antigen bundle command-not-found
 antigen bundle colored-man-pages
-antigen bundle common-aliases
-antigen bundle git-extras
+#antigen bundle common-aliases
+antigen bundle git-extras  # requires 'apt install git-extras'
 antigen bundle web-search
 antigen bundle z
 antigen bundle docker
-antigen bundle kubernetes
+antigen bundle docker-compose
+antigen bundle kubectl
 antigen bundle helm
 antigen bundle aws
-
-# if (( $+commands[asdf] )); then
-#     antigen bundle asdf
-# fi
 
 # Bundles from zsh-users repo
 #antigen bundle zsh-users/zsh-syntax-highlighting
@@ -30,14 +29,10 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
 # Additonal bundles
-# adds fzf <trigger><TAB> completion for almost everything
-antigen bundle Aloxaf/fzf-tab
+antigen bundle Aloxaf/fzf-tab  # adds fzf <trigger><TAB> completion for almost everything
 antigen bundle zdharma/fast-syntax-highlighting
 antigen bundle wfxr/forgit
 #antigen bundle chitoku-k/fzf-zsh-completions
-
-# select zsh theme
-antigen theme candy
 
 # Tell Antigen that you're done.
 antigen apply

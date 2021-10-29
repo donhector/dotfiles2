@@ -1,9 +1,10 @@
 ### SHELL agnostic aliases
  
 # ls aliases
-alias l="ls -CF"
+alias l="ls -CF"     # show hidden and alpha ordered
 alias ll="ls -lh"
-alias la="ls -lAh"
+alias la="ls -lAh"   # show hidden files
+alias lo='ls -laSFh' # sort by size largest to smallest
 alias sl="ls"
 alias lt='ls --human-readable --size -1 -S --classify'
 
@@ -14,6 +15,9 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
+
+# history
+alias h='history'
 
 # Process related aliases
 alias ps='ps -aux'
@@ -27,8 +31,13 @@ alias watch='watch ' ## Allow aliases to be watched
 
 # Time and date aliases
 alias now='date +"%T"'
-alias nowtime=now
-alias nowdate='date +"%d-%m-%Y"'
+alias day='date +"%d-%m-%Y"'
+alias today='date +"%A, %B %-d, %Y"'
+alias timestamp='date "+%Y%m%dT%H%M%S"'
+alias epochtime='date +%s'
+alias cal='cal -3'
+alias weeknum='date +%V'
+alias daysleft='echo "There are $(($(date +%j -d"Dec 31, $(date +%Y)")-$(date +%j))) left in year $(date +%Y)."'
 
 # Show PATH as lines
 alias path='echo -e ${PATH//:/\\n}'

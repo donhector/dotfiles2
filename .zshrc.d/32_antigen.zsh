@@ -1,6 +1,7 @@
 # Setup Antigen, the plugin manager for Zsh
 
 function install_antigen {
+    echo "Installing Antigen, the plugin manager for Zsh"
     curl -L git.io/antigen > ~/antigen.zsh
 }
 
@@ -13,13 +14,16 @@ function uninstall_antigen {
     rm -rf ~/.antigen/
 }
 
+
+# Install antigen if not present
+[ ! -f ~/antigen.zsh ] && install_antigen
+
+# If installed, load it and use my conifg    
 if [ -f ~/antigen.zsh ]; then
     # Load antigen
     source ~/antigen.zsh
     if [ -f ~/.antigenrc ]; then
-        # Configure antigen as per my linking
+        # Load my config
         source ~/.antigenrc
     fi
-else
-    install_antigen
 fi

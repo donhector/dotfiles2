@@ -18,6 +18,6 @@ fi
 
 # Ensure that a non-login, non-interactive shell has a defined environment.
 # This will take care of loading my preferences -aliases, settings, etc..- to those type of shells
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
-fi
+# if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
+#   source "${ZDOTDIR:-$HOME}/.zprofile"
+# fi

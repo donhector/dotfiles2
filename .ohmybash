@@ -50,13 +50,16 @@ OSH_THEME="axin"
 # Example format: completions=(ssh git bundler gem pip pip3)
 # Add wisely, as too many completions slow down shell startup.
 completions=(
-  git
-  composer
-  ssh
   pip
   pip3
+  docker
+  docker-compose
   kubectl
-  helm
+  minikube
+  terraform
+  packer
+  awscli
+  go
 )
 
 # Which aliases would you like to load? (aliases can be found in ~/.oh-my-bash/aliases/*)
@@ -73,8 +76,7 @@ aliases=(
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  bashmarks
-  fzf
+  kubectl
 )
 
 source $OSH/oh-my-bash.sh

@@ -14,5 +14,5 @@ then
 else
     export HOST=$(hostname)
     /usr/bin/keychain --nogui $HOME/.ssh/id_{rsa,ed25519}
-    . $HOME/.keychain/$HOST-sh
+    source $HOME/.keychain/$HOST-sh
 fi

@@ -27,7 +27,10 @@ setopt HIST_REDUCE_BLANKS
 setopt EXTENDED_HISTORY
 
 # expire duplicates first
-setopt HIST_EXPIRE_DUPS_FIRST 
+setopt HIST_EXPIRE_DUPS_FIRST
+
+# ensure no dupes also in the history file (not just in memory)
+setopt HIST_IGNORE_ALL_DUPS
 
 
 # ===== Completion 
