@@ -14,7 +14,7 @@ print_info() {
     info "Battery" battery
     info "Uptime" uptime
     info "Local IP" local_ip
-    info "Public IP" public_ip
+    #info "Public IP" public_ip
     info underline
     info cols
 }

@@ -162,7 +162,7 @@ function urlarray {
 
 # print a separator banner, as wide as the terminal
 function hr {
-	printf "=%.0s" $(seq $COLUMNS)
+	printf "-%.0s" $(seq $COLUMNS)
 }
 
 # Useful when running under WSL2 to resolve windows variables such as "%APPDATA%"
@@ -187,6 +187,6 @@ function tailf {
 }
 
 # Intereactively select the process(es) to kill
-function k9z {
-    ps -ef | fzf --reverse -m | awk '{print \$2}' | xargs kill -9
+function killz {
+    ps -f | fzf --reverse -m --preview-window=down:4:wrap | awk '{print $2}' | xargs kill -9
 }
