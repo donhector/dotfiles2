@@ -4,6 +4,8 @@ if [ -n "${WSL_DISTRO_NAME}" ]; then
   # Function to resolve Windows variables. Removes the CR windows binaries spit out
   get_win_var () { cmd.exe /c "echo ${1}" 2> /dev/null | sed -e 's/\r//g'; }
 
+  wslshutdown () { cmd.exe /C wsl --shutdown -d ${WSL_DISTRO_NAME}; }
+
   # Since systemd is not enabled in WSL2, we need to start any services manually
   services=( docker cron )
   for service in "${services[@]}"; do
