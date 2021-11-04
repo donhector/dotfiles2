@@ -165,11 +165,6 @@ function hr {
 	printf "-%.0s" $(seq $COLUMNS)
 }
 
-# Useful when running under WSL2 to resolve windows variables such as "%APPDATA%"
-function get_win_var {
-    cmd.exe /c "echo ${1}" 2> /dev/null | sed -e 's/\r//g'
-}
-
 # Enhanced git diff using bat
 function gitdiff() {
     git diff --name-only --diff-filter=d | xargs bat --diff
@@ -189,4 +184,23 @@ function tailf {
 # Intereactively select the process(es) to kill
 function killz {
     ps -f | fzf --reverse -m --preview-window=down:4:wrap | awk '{print $2}' | xargs kill -9
+}
+
+# Interactively find text in files. Supports context preview and opening the match in vscode
+function fif() {
+    rg  \
+    --column \
+    --no-heading \
+    --fixed-strings \
+    --ignore-case \
+    --hidden \
+    --follow \
+    --glob '!.git/*' \
+    --glob '!.vscode-server/*' \
+     "$1" \
+    | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " $3 " " start ":" end}' \
+    | fzf \
+        --bind 'ctrl-o:execute(code --goto {1}:{2}:{3})+cancel' \
+        --preview 'bat --wrap character --color always {1} --highlight-line {2} --line-range {4}' \
+        --preview-window wrap
 }

@@ -20,7 +20,6 @@ alias .......='cd ../../../../../..'
 alias h='history'
 
 # Process related aliases
-alias ps='ps -aux'
 alias psf='ps -faux'
 alias ns='netstat -tulpn'
 alias j='jobs -l'

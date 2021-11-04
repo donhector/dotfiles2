@@ -27,6 +27,7 @@ antigen bundle zdharma-mirror/fast-syntax-highlighting --branch=main
 antigen bundle zsh-users/zsh-history-substring-search ./zsh-history-substring-search.zsh
 
 # Additonal bundles
+antigen bundle djui/alias-tips
 antigen bundle Aloxaf/fzf-tab  # adds fzf <trigger><TAB> completion for almost everything
 antigen bundle wfxr/forgit
 #antigen bundle chitoku-k/fzf-zsh-completions
