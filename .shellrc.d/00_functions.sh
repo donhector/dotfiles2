@@ -204,3 +204,7 @@ function fif() {
         --preview 'bat --wrap character --color always {1} --highlight-line {2} --line-range {4}' \
         --preview-window wrap
 }
+
+function aptz() {
+    apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
+}
