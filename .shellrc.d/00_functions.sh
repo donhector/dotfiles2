@@ -27,31 +27,31 @@ function cecho {
 }
 
 function error {
-    cecho $RED "ERROR: ${@}"
+    cecho "$RED" "ERROR: ${@}"
 }
 
 function fatal {
-    cecho $RED "FATAL: ${@}"
+    cecho "$RED" "FATAL: ${@}"
 }
 
 function warn {
-    cecho $YELLOW "WARN: ${@}"
+    cecho "$YELLOW" "WARN: ${@}"
 }
 
 function info {
-    cecho $NO_COLOR "INFO: ${@}"
+    cecho "$NO_COLOR" "INFO: ${@}"
 }
 
 function success {
-    cecho $GREEN "SUCCESS: ${@}"
+    cecho "$GREEN" "SUCCESS: ${@}"
 }
 
 function debug {
-    cecho $DARK_GRAY "DEBUG: ${@}"
+    cecho "$DARK_GRAY" "DEBUG: ${@}"
 }
 
 function highlight {
-    cecho $CYAN "${@}"
+    cecho "$CYAN" "${@}"
 }
 
 
