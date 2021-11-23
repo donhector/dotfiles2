@@ -173,7 +173,7 @@ function gitdiff() {
 # Interactively get latest release assest(s) from Github (fzf powered)
 function gdlr {
     local project="${1:?'User/repo combination must be provided. Ex: sharkdp/fd'}"
-    curl -s https://api.github.com/repos/${project}/releases/latest | grep "browser_download_url" | cut -d '"' -f 4 | fzf -m | wget -i -
+    curl -s https://api.github.com/repos/"${project}"/releases/latest | grep "browser_download_url" | cut -d '"' -f 4 | fzf -m | wget -i -
 }
 
 # Enhanced tail -f output

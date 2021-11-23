@@ -1,7 +1,6 @@
 # Load fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
 ### Here's a list of extra previews to be used by the fzf-tab plugin
 
 # Preview systemd unit status
