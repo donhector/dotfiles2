@@ -30,6 +30,9 @@
 [gpg]
 	program = gpg
 
+[commit]
+  template = ~/.config/git/gitmessage
+
 # Added to fix some antigen plugin issues
 # [url "git@github.com:"]
 #     insteadOf = https://github.com/

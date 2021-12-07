@@ -19,4 +19,6 @@ then
     install_gh
 fi
 
-#alias gpr='gh pr create --fill -a @me'
+alias ghpr='gh pr create --fill -a @me'
+alias gph='git push -u origin HEAD'
+alias c='git cz commit'

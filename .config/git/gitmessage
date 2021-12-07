@@ -1,0 +1,64 @@
+# --------------------- Start Git Message ------------------------------
+# <type>[(<scope>)]: <subject>
+##### Subject 50 characters ################# -> |
+
+
+# [<body>]
+######## Body 72 characters ####################################### -> |
+
+
+# [<footer(s)>]
+######## Body 72 characters ####################################### -> |
+
+# --------------------- Parameter description --------------------------
+# <type>
+#   It's required and must be one of the following:
+#   - build    : Changes that affect the build system or external dependencies (example scopes: pip, make)
+#   - chore    : Other changes that don't modify src or test files
+#   - ci       : Changes to CI configuration files and scripts (pipelines as code, github actions, etc...)
+#   - docs     : Changes to documentation
+#   - feat     : New feature (correlates with MINOR in Semantic Versioning)
+#   - fix      : Bug fix (correlates with PATCH in Semantic Versioning)
+#   - perf     : Changes that improves performance
+#   - refactor : Changes that neither fixes a bug nor adds a feature
+#   - revert   : Reverts a previous commit
+#   - style    : Changes that do not affect the meaning of the code (white-space, formatting, etc)
+#   - test     : Adding or refactoring tests
+#
+#   For breaking changes:
+#   A commit that has a footer "BREAKING CHANGE:", or appends a ! after the type/scope,
+#   introduces a breaking API change (correlates with MAJOR in Semantic Versioning).
+#   A BREAKING CHANGE can be part of commits of any <type>.
+#
+# <scope>
+#   It's OPTIONAL and could be anything specifying the area of the commit.
+#   For example, 'frontend', 'backend', 'api', 'ci', 'l10n', ...
+#   If the change spans multiple scopes, separate them using commas: <type>(<scope1>, <scope2>)
+#
+# <subject>
+#   It contains a succinct description of the change
+#   Capitalize the subject line
+#   Don't exceed 50 chars in leght.
+#   Use the imperative, present tense: "change" not "changed" nor "changes"
+#   Do not end the subject line with a period
+#   Separate subject from body with a blank line
+#   
+# <body>
+#   It's OPTIONAL and should include the motivation for the change (the 'what' and 'why', not the 'how')
+#   The body is free-form and MAY consist of any number of newline separated paragraphs.
+#   Can use multiple lines with "-" for bullet points.
+#
+# <footer(s)>
+#   It's OPTIONAL and it should contain info about breaking changes, and additional references.  
+#   One or more footers MAY be provided one blank line after the body.
+#   Each footer MUST consist of a word token, followed by either a :<space> or <space># separator, followed by a string value.
+#   A footer’s token MUST use - in place of whitespace characters, e.g., "Reviewed-by: ", "Refs:"
+#   The footer should contain any JIRA (or other tool) issue references and/or actions such as 'Closes #108'.
+#
+# ----------------------
+# References:
+# - Convetional commits
+#   https://www.conventionalcommits.org/en/v1.0.0/
+# - Example of how to write a good commit message
+#   https://github.com/sparkbox/how_to/tree/master/style/git
+#

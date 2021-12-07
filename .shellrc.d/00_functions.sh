@@ -165,6 +165,14 @@ function hr {
 	printf "-%.0s" $(seq $COLUMNS)
 }
 
+# Download audio from the given Youtube video or playlist URL
+ytmp3() {
+    command -v yt-dlp >/dev/null 2>&1 || pip install --user yt-dlp
+    command -v ffmpeg >/dev/null 2>&1 || sudo apt install -y -qq --no-install-recommends ffmpeg
+    local URL="${1:?'Error: URL to video or playlist must be provided'}"
+    yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 --download-archive catalog.txt "$URL"
+}
+
 # Enhanced git diff using bat
 function gitdiff() {
     git diff --name-only --diff-filter=d | xargs bat --diff
@@ -208,3 +216,8 @@ function fif() {
 function aptz() {
     apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
 }
+
+# Better man pages for the given command
+help() {
+    curl cheat.sh/"$1"
+ }

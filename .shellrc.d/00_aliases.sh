@@ -54,7 +54,7 @@ alias mountc='mount | column -t'
 alias hg='history|grep'
 
 # find related
-alias count='find . -type f | wc -l'
+alias count='wc -l'
 
 # octal+text permissions for files
 alias perms="stat -c '%A %a %n UID (%u/%U) GID (%g/%G)'"
@@ -89,9 +89,6 @@ alias json="python3 -m json.tool"
 # Convert yaml to pretty JSON:
 alias yaml="python3 -c 'import json, sys, yaml; y=yaml.safe_load(sys.stdin.read()); print(json.dumps(y, indent=4))'"
 
-# Download audio from Youtube
-alias ymp3="youtube-dl --extract-audio --audio-format mp3"
-
 # Speed test
 alias speedtest='wget -O /dev/null http://speedtest.london.linode.com/100MB-london.bin'
 
@@ -99,7 +96,7 @@ alias speedtest='wget -O /dev/null http://speedtest.london.linode.com/100MB-lond
 alias keys='for key in ~/.ssh/id_*; do ssh-keygen -l -f "${key}"; done | uniq'
 alias keypair="ssh-keygen -t ed25519 -C ${USER}@${HOST}"
 
-
+# WSL specifc aliases
 if [ -n "$WSL_DISTRO_NAME" ]; then
     # This is specific to WSL 2. If the WSL 2 VM goes rogue and decides not to free
     # up memory, this command will free your memory after about 20-30 seconds.
