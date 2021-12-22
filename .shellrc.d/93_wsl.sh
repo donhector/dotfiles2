@@ -1,6 +1,11 @@
 # Windows Subsystem for Linux specific stuff
 if [ -n "${WSL_DISTRO_NAME}" ]; then
 
+  #export DISPLAY=${HOST}.local:0.0
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+  export LIBGL_ALWAYS_INDIRECT=1
+
+
   # Function to resolve Windows variables. Removes the CR windows binaries spit out
   get_win_var () { cmd.exe /c "echo ${1}" 2> /dev/null | sed -e 's/\r//g'; }
 

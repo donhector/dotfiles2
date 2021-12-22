@@ -221,3 +221,9 @@ function aptz() {
 help() {
     curl cheat.sh/"$1"
  }
+
+# Replace text in files
+# Usage: replace 'foo' 'bar'
+replace() {
+    rg "$1" --files-with-matches | xargs sed -i "s/$1/$2/g"
+}

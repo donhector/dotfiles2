@@ -19,5 +19,3 @@ if ! command -v rg > /dev/null 2>&1
 then
     install_rg
 fi
-
-alias rgf='rg --files --hidden | rg'

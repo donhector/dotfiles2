@@ -5,4 +5,4 @@ yq 4.0.0
 fzf 0.25.1
 terraform 0.14.7
 python 3.9.6
-nodejs 15.11.0
+nodejs 17.2.0

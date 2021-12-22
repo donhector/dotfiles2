@@ -20,6 +20,7 @@ alias .......='cd ../../../../../..'
 alias h='history'
 
 # Process related aliases
+alias x='exit'
 alias psf='ps -faux'
 alias ns='netstat -tulpn'
 alias j='jobs -l'
@@ -105,3 +106,16 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
     alias open="explorer.exe ."
     alias browse="/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe"
 fi
+
+## Git related aliases
+alias ghpr='gh pr create --fill -a @me'
+alias gph='git push -u origin HEAD'
+alias c='git cz commit'
+
+
+## Ripgrep aliases
+alias rgf='rg --files --hidden | rg'
+
+## Hosts
+alias xeon='ssh hector@xeon.lan'
+alias openwrt='ssh root@openwrt.lan'

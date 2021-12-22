@@ -18,7 +18,3 @@ if ! command -v gh > /dev/null 2>&1
 then
     install_gh
 fi
-
-alias ghpr='gh pr create --fill -a @me'
-alias gph='git push -u origin HEAD'
-alias c='git cz commit'

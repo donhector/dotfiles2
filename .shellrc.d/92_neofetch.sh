@@ -14,4 +14,4 @@ then
 fi
 
 # Show neofetch info 
-neofetch 2>/dev/null
+#neofetch 2>/dev/null
