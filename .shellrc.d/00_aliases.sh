@@ -39,8 +39,9 @@ alias cal='cal -3'
 alias weeknum='date +%V'
 alias daysleft='echo "There are $(($(date +%j -d"Dec 31, $(date +%Y)")-$(date +%j))) left in year $(date +%Y)."'
 
-# Show PATH as lines
+# Show PATH and FPATH as lines
 alias path='echo -e ${PATH//:/\\n}'
+alias fpath='echo -e ${FPATH//:/\\n}'
 
 # Show environment sorted
 alias envs='env | sort'
