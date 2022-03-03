@@ -4,6 +4,9 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+# Prevent 'less' from PAGING when it should not
+export LESS='--no-init --quit-if-one-screen -R'
+
 # Colors
 BLACK=$(tput setaf 0)
 RED=$(tput setaf 1)

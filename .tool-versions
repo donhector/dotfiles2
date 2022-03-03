@@ -3,6 +3,6 @@ kubectl 1.22.0
 jq 
 yq 4.0.0
 fzf 0.25.1
-terraform 0.14.7
+terraform 1.1.4
 python 3.9.6
 nodejs 17.2.0
