@@ -227,3 +227,17 @@ help() {
 replace() {
     rg "$1" --files-with-matches | xargs sed -i "s/$1/$2/g"
 }
+
+# Install and configure a tool using asdf
+asdfi(){
+    local tool="${1:?'Tool name must be provided as first argument. Ex: terraform'}"
+    local version="${2:-latest}"
+    echo "########################################"
+    echo " Installing ${tool} ${version}"
+    echo "########################################"
+    asdf plugin list | grep -q "${tool}" && \
+        ( asdf install "${tool}" "${version}" && \
+          asdf reshim "${tool}" && \
+          asdf global "${tool}" "${version}"
+        ) || asdf plugin add "${1}" || return
+}

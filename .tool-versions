@@ -6,3 +6,6 @@ fzf 0.25.1
 terraform 1.1.4
 python 3.9.6
 nodejs 17.2.0
+dockle 0.4.5
+checkov 2.0.929
+grype 0.33.0
