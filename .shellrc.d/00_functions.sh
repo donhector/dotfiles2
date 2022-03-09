@@ -239,5 +239,5 @@ asdfi(){
         ( asdf install "${tool}" "${version}" && \
           asdf reshim "${tool}" && \
           asdf global "${tool}" "${version}"
-        ) || asdf plugin add "${1}" || return
+        ) || asdf plugin-add "${1}" || return
 }
