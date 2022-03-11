@@ -24,10 +24,10 @@ _asdf_load(){
 
 _asdf_install_tools(){
     if [ -f ~/.tool-versions ]; then
-        set -x
-        cut -d' ' -f1 ~/.tool-versions | xargs -r asdf plugin add
-        asdf install
-        set +x
+        grep -v '^#' ~/.tool-versions \
+        | cut -d' ' -f1 \
+        | xargs -r -n1 -I% sh -c \
+            'echo Adding plugin % && asdf plugin add % && asdf install'
     fi
 }
 
