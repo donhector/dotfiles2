@@ -4,6 +4,13 @@ function install_asdf {
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf
     cd ~/.asdf
     git checkout "$(git describe --abbrev=0 --tags)"
+    cd -
+
+    # Install tools
+    if [ -f ~/.tool-versions ]; then
+        cut -d' ' -f1 .tool-versions | xargs -r asdf plugin add
+        asdf install
+    fi
 }
 
 function update_asdf {
@@ -23,5 +30,3 @@ fi
 if [ -f ~/.asdf/asdf.sh ]; then
     . ~/.asdf/asdf.sh
 fi
-
-# When you are ready, run 'asdf install' to install the tools in the '.tool-versions' file
