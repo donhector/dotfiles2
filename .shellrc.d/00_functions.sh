@@ -205,7 +205,7 @@ function fif() {
     --follow \
     --glob '!.git/*' \
     --glob '!.vscode-server/*' \
-     "$1" \
+    "$1" \
     | awk -F  ":" '/1/ {start = $2<5 ? 0 : $2 - 5; end = $2 + 5; print $1 " " $2 " " $3 " " start ":" end}' \
     | fzf \
         --bind 'ctrl-o:execute(code --goto {1}:{2}:{3})+cancel' \

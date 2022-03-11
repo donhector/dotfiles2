@@ -1,5 +1,19 @@
 #!/usr/bin/env sh
 
+### Set FZF_HOME variable
+
+fzf_home(){
+  fzf_location=$(which fzf)
+  case "${fzf_location}" in
+    *shims*) fzf_location=$(asdf which fzf) ;;
+    *) ;;
+  esac
+  echo "$(dirname $(dirname ${fzf_location}))"
+}
+
+export FZF_HOME="$(fzf_home)"
+
+
 ### Customize fzf settings
 
 fzf_compgen_path() {
