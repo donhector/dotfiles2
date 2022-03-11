@@ -23,3 +23,5 @@ fi
 if [ -f ~/.asdf/asdf.sh ]; then
     . ~/.asdf/asdf.sh
 fi
+
+# When you are ready, run 'asdf install' to install the tools in the '.tool-versions' file

@@ -1,25 +1,5 @@
 #!/usr/bin/env sh
 
-### Setup fzf (fuzzy finder)
-
-function install_fzf {
-	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-	~/.fzf/install
-}
-
-function update_fzf {
-	cd ~/.fzf && git pull && ./install
-}
-
-function uninstall_fzf {
-	cd ~/.fzf && ./uninstall
-}
-
-### Install fzf if not present
-
-[ ! -d ~/.fzf ] && install_fzf
-
-
 ### Customize fzf settings
 
 fzf_compgen_path() {
@@ -44,7 +24,7 @@ _fzf_comprun() {
 
 # Setting fd as the default source for fzf as it's faster an easier than 'find'
 # Tell fd to follow symlinks and show hidden stuff except .git directories
-FD_OPTS="--hidden --follow --exclude .git --exclude node_modules"
+FD_OPTS="--hidden --follow --exclude .git --exclude node_modules --exclude .npm"
 export FZF_CTRL_T_COMMAND="fd ${FD_OPTS}"
 export FZF_ALT_C_COMMAND="fd ${FD_OPTS} --type d"
 export FZF_DEFAULT_COMMAND="${FZF_CTRL_T_COMMAND}"

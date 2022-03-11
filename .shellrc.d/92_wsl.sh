@@ -1,8 +1,9 @@
 # Windows Subsystem for Linux specific stuff
+
 if [ -n "${WSL_DISTRO_NAME}" ]; then
 
   #export DISPLAY=${HOST}.local:0.0
-  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0
+  export DISPLAY="$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0.0"
   export LIBGL_ALWAYS_INDIRECT=1
 
   # Some command line tools (podman login) use the location defined in XDG_RUNTIME_DIR to store some data
@@ -21,7 +22,7 @@ if [ -n "${WSL_DISTRO_NAME}" ]; then
   # Since systemd is not enabled in WSL2, we need to start any services manually
   services=( docker cron )
   for service in "${services[@]}"; do
-    sudo service ${service} status 2>&1 >/dev/null || sudo service ${service} start
+    sudo service "${service}" status 2>&1 >/dev/null || sudo service "${service}" start
   done
 
   # This solves issues with docker/podman containers that rely on systemd

@@ -13,5 +13,5 @@ then
     install_neofetch
 fi
 
-# Show neofetch info 
+# Show neofetch info
 #neofetch 2>/dev/null

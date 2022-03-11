@@ -18,7 +18,7 @@ function uninstall_antigen {
 # Install antigen if not present
 [ ! -f ~/antigen.zsh ] && install_antigen
 
-# If installed, load it and use my conifg    
+# If installed, load it and use my conifg
 if [ -f ~/antigen.zsh ]; then
     # Load antigen
     source ~/antigen.zsh

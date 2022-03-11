@@ -228,16 +228,16 @@ replace() {
     rg "$1" --files-with-matches | xargs sed -i "s/$1/$2/g"
 }
 
-# Install and configure a tool using asdf
+# Interactively install software using asdf
+# First you can fzf the plugin to install, then you can fzf the version to install
+# Version is sorted from newer to lower (ie: --tac)
+# % is the selected plugin
+# @ is the selected version
+# {} is the selected version mode (one of "global" "local" "shell")
 asdfi(){
-    local tool="${1:?'Tool name must be provided as first argument. Ex: terraform'}"
-    local version="${2:-latest}"
-    echo "########################################"
-    echo " Installing ${tool} ${version}"
-    echo "########################################"
-    asdf plugin list | grep -q "${tool}" && \
-        ( asdf install "${tool}" "${version}" && \
-          asdf reshim "${tool}" && \
-          asdf global "${tool}" "${version}"
-        ) || asdf plugin-add "${1}" || return
+    asdf plugin-list-all | cut -d ' ' -f1 | fzf --cycle --reverse | \
+        xargs -r -I% sh -c \
+            "asdf plugin add % || true && asdf list-all % | fzf --tac | xargs -r -I@ sh -c \
+            'asdf install % @ && printf \"global\nlocal\nshell\" | fzf | xargs -r -I{} asdf {} % @ \
+            && asdf reshim %'"
 }
