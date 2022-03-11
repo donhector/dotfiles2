@@ -24,7 +24,7 @@ _asdf_load(){
 
 _asdf_install_tools(){
     if [ -f ~/.tool-versions ]; then
-        cut -d' ' -f1 .tool-versions | xargs -r asdf plugin add
+        cut -d' ' -f1 ~/.tool-versions | xargs -r asdf plugin add
         asdf install
     fi
 }
