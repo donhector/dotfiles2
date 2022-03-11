@@ -5,9 +5,6 @@ install_asdf() {
     cd ~/.asdf
     git checkout "$(git describe --abbrev=0 --tags)"
     cd -
-    _asdf_load
-    _asdf_install_tools
-
 }
 
 update_asdf() {
@@ -32,4 +29,12 @@ _asdf_install_tools(){
     fi
 }
 
+# Install it if not present
+if [ ! -d ~/.asdf ]; then
+    install_asdf
+    _asdf_load
+    _asdf_install_tools
+fi
+
+# Always load asdf
 _asdf_load
