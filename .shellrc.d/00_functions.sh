@@ -56,7 +56,7 @@ highlight() {
 
 
 # Extract an archive
-extract()() {
+extract() {
     if [ -z "$2" ]; then 2="."; fi
     if [ -f "$1" ] ; then
         case "$1" in
@@ -86,7 +86,7 @@ extract()() {
 }
 
 # compress a file or folder
-compress()() {
+compress() {
 	if [ -z "$2" ]; then 2="."; fi
     case "$1" in
         tar.bz2|.tar.bz2) tar cvjf "${2%%/}.tar.bz2" "${2%%/}/" ;;
@@ -240,14 +240,4 @@ asdfi(){
             "asdf plugin add % || true && asdf list-all % | fzf --tac | xargs -r -I@ sh -c \
             'asdf install % @ && printf \"global\nlocal\nshell\" | fzf | xargs -r -I{} asdf {} % @ \
             && asdf reshim %'"
-}
-
-# Return the home directory for an asdf installed tool
-asdf_tool_home(){
-    asdf_tool_location=$(which "${1}")
-    case "${asdf_tool_location}" in
-        *shims*) asdf_tool_location=$(asdf which "${1}") ;;
-        *) ;;
-    esac
-    dirname "$(dirname "${asdf_tool_location}")"
 }

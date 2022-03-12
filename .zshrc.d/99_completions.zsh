@@ -30,11 +30,11 @@ command -v gh >/dev/null 2>&1 \
 
 ## Ripgrep
 command -v rg >/dev/null 2>&1 \
-  && cp "$(asdf_tool_home rg)/complete/_rg" ~/.zfunc/
+  && cp "$(asdf where ripgrep)/complete/_rg" ~/.zfunc/
 
 ## Fd
 command -v rg >/dev/null 2>&1 \
-  && cp "$(asdf_tool_home fd)/autocomplete/_fd" ~/.zfunc/
+  && cp "$(asdf where fd)/autocomplete/_fd" ~/.zfunc/
 
 ## Kubectl
 command -v kubectl >/dev/null 2>&1 \
@@ -46,7 +46,10 @@ command -v kubectl >/dev/null 2>&1 \
 command -v aws >/dev/null 2>&1 \
   && complete -C $(which aws_completer) aws
 
-
 ## helm
 command -v helm >/dev/null 2>&1 \
   && helm completion zsh > ~/.zfunc/_helm
+
+## grype
+command -v grype >/dev/null 2>&1 \
+  && grype completion zsh > ~/.zfunc/_grype

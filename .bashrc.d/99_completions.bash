@@ -24,11 +24,11 @@ command -v terraform >/dev/null 2>&1 \
 
 ## Ripgrep
 command -v rg >/dev/null 2>&1 \
-  && source "$(asdf_tool_home rg)/complete/rg.bash"
+  && source "$(asdf where ripgrep)/complete/rg.bash"
 
 ## Fd
 command -v rg >/dev/null 2>&1 \
-  && source "$(asdf_tool_home fd)/autocomplete/fd.bash"
+  && source "$(asdf where fd)/autocomplete/fd.bash"
 
 
 ## Kubectl
@@ -43,3 +43,7 @@ command -v aws >/dev/null 2>&1 \
 ## Helm
 command -v helm >/dev/null 2>&1 \
   && helm completion bash > /etc/bash_completion.d/helm
+
+## Grype
+command -v grype >/dev/null 2>&1 \
+  && source <(grype completion bash)
