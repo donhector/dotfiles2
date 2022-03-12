@@ -1,10 +1,10 @@
 # Load SSH keys into SSH agent (needs 'apt install keychain')
 
-function install_keychain {
+install_keychain() {
     sudo apt -yqq install keychain
 }
 
-function uninstall_keychain {
+uninstall_keychain() {
 	sudo apt remove keychain
 }
 

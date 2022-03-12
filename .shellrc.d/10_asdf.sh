@@ -1,10 +1,10 @@
 # ASDF software manager setup
 
 install_asdf() {
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-    cd ~/.asdf
-    git checkout "$(git describe --abbrev=0 --tags)"
-    cd -
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf \
+    && cd ~/.asdf \
+    && git checkout "$(git describe --abbrev=0 --tags)" \
+    && cd -
 }
 
 update_asdf() {
@@ -38,5 +38,5 @@ if [ ! -d ~/.asdf ]; then
     _asdf_install_tools
 fi
 
-# Always load asdf
+# Always load asdf if present
 _asdf_load

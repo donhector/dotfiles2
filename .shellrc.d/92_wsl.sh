@@ -22,7 +22,7 @@ if [ -n "${WSL_DISTRO_NAME}" ]; then
   # Since systemd is not enabled in WSL2, we need to start any services manually
   services=( docker cron )
   for service in "${services[@]}"; do
-    sudo service "${service}" status 2>&1 >/dev/null || sudo service "${service}" start
+    sudo service "${service}" status >/dev/null 2>&1 || sudo service "${service}" start
   done
 
   # This solves issues with docker/podman containers that rely on systemd

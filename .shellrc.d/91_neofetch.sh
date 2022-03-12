@@ -1,10 +1,10 @@
 # Neofetch setup
 
-function install_neofetch {
+install_neofetch() {
     sudo apt -yqq install neofetch
 }
 
-function uninstall_neofetch {
+uninstall_neofetch() {
 	sudo apt remove neofetch
 }
 

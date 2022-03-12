@@ -17,7 +17,8 @@ antigen bundle docker
 antigen bundle docker-compose
 antigen bundle kubectl
 antigen bundle helm
-antigen bundle aws
+#antigen bundle aws
+
 
 # Bundles for zsh
 antigen bundle zsh-users/zsh-completions

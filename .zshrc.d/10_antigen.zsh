@@ -1,15 +1,15 @@
 # Setup Antigen, the plugin manager for Zsh
 
-function install_antigen {
+install_antigen() {
     echo "Installing Antigen, the plugin manager for Zsh"
     curl -L git.io/antigen > ~/antigen.zsh
 }
 
-function update_antigen {
+update_antigen() {
 	install_antigen
 }
 
-function uninstall_antigen {
+uninstall_antigen() {
 	rm -rf ~/antigen.zsh
     rm -rf ~/.antigen/
 }

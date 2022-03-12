@@ -1,62 +1,62 @@
 # make a backup of a file
-function bak {
+bak() {
 	cp -av "$1" "${1}_$(date --iso-8601=seconds).bak"
 }
 
 # make a dir and cd into it
-function mkcd {
+mkcd() {
     mkdir -p "$@" || return
     shift $(( $# - 1)) 
     cd "$1"
 }
 
 # make temp dir and cd into it
-function mkcdtmp {
+mkcdtmp() {
 	cd "$( mktemp -d )";
 }
 
 # change dir and show contents
-function cdls() { cd "$@" && ls -Fa --color=auto; }
+cdls() { cd "$@" && ls -Fa --color=auto; }
 
 ## Colored output for scripts
 # colored echo
-function cecho {
+cecho() {
     color=$1
     shift
     echo -e "${color}${@}${NO_COLOR}"
 }
 
-function error {
+error() {
     cecho "$RED" "ERROR: ${@}"
 }
 
-function fatal {
+fatal() {
     cecho "$RED" "FATAL: ${@}"
 }
 
-function warn {
+warn() {
     cecho "$YELLOW" "WARN: ${@}"
 }
 
-function info {
+info() {
     cecho "$NO_COLOR" "INFO: ${@}"
 }
 
-function success {
+success() {
     cecho "$GREEN" "SUCCESS: ${@}"
 }
 
-function debug {
+debug() {
     cecho "$DARK_GRAY" "DEBUG: ${@}"
 }
 
-function highlight {
+highlight() {
     cecho "$CYAN" "${@}"
 }
 
 
 # Extract an archive
-function extract() {
+extract()() {
     if [ -z "$2" ]; then 2="."; fi
     if [ -f "$1" ] ; then
         case "$1" in
@@ -86,7 +86,7 @@ function extract() {
 }
 
 # compress a file or folder
-function compress() {
+compress()() {
 	if [ -z "$2" ]; then 2="."; fi
     case "$1" in
         tar.bz2|.tar.bz2) tar cvjf "${2%%/}.tar.bz2" "${2%%/}/" ;;
@@ -115,7 +115,7 @@ function compress() {
 }
 
 # get host ip
-function myip {
+myip() {
 	local api
 	case "$1" in
 		"-4")
@@ -141,27 +141,27 @@ function myip {
 }
 
 # open a web browser on google for a query
-function google {
+google() {
 	xdg-open "https://www.google.com/search?q=`urlencode "${(j: :)@}"`"
 }
 
 # Encode with URLEncode
-function urlencode {
+urlencode() {
 	python -c "import sys; from urllib.parse import quote_plus; print(quote_plus(sys.stdin.read()))"
 }
 
 # Decode URLencoded string
-function urldecode {
+urldecode() {
 	python -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()), end='')"
 }
 
 # Convert a querystring into pretty JSON
-function urlarray {
+urlarray() {
 	python -c "import sys, json; from urllib.parse import parse_qs; print(json.dumps({k: q[0] if len(q) == 1 else q for k, q in parse_qs(sys.stdin.read()).items()}), end='')" | json
 }
 
 # print a separator banner, as wide as the terminal
-function hr {
+hr() {
 	printf "-%.0s" $(seq $COLUMNS)
 }
 
@@ -174,28 +174,28 @@ ytmp3() {
 }
 
 # Enhanced git diff using bat
-function gitdiff() {
+gitdiff() {
     git diff --name-only --diff-filter=d | xargs bat --diff
 }
 
 # Interactively get latest release assest(s) from Github (fzf powered)
-function gdlr {
+gdlr() {
     local project="${1:?'User/repo combination must be provided. Ex: sharkdp/fd'}"
     curl -s https://api.github.com/repos/"${project}"/releases/latest | grep "browser_download_url" | cut -d '"' -f 4 | fzf -m | wget -i -
 }
 
 # Enhanced tail -f output
-function tailf {
+tailf() {
     tail -f "$@" | bat --paging=never -l log
 }
 
 # Intereactively select the process(es) to kill
-function killz {
+killz() {
     ps -f | fzf --reverse -m --preview-window=down:4:wrap | awk '{print $2}' | xargs kill -9
 }
 
 # Interactively find text in files. Supports context preview and opening the match in vscode
-function fif() {
+fif() {
     rg  \
     --column \
     --no-heading \
@@ -213,14 +213,14 @@ function fif() {
         --preview-window wrap
 }
 
-function aptz() {
+aptz() {
     apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
 }
 
 # Better man pages for the given command
 help() {
     curl cheat.sh/"$1"
- }
+}
 
 # Replace text in files
 # Usage: replace 'foo' 'bar'
@@ -240,4 +240,14 @@ asdfi(){
             "asdf plugin add % || true && asdf list-all % | fzf --tac | xargs -r -I@ sh -c \
             'asdf install % @ && printf \"global\nlocal\nshell\" | fzf | xargs -r -I{} asdf {} % @ \
             && asdf reshim %'"
+}
+
+# Return the home directory for an asdf installed tool
+asdf_tool_home(){
+    asdf_tool_location=$(which "${1}")
+    case "${asdf_tool_location}" in
+        *shims*) asdf_tool_location=$(asdf which "${1}") ;;
+        *) ;;
+    esac
+    dirname "$(dirname "${asdf_tool_location}")"
 }

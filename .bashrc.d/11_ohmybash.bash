@@ -1,12 +1,12 @@
-function install_ohmybash {
+install_ohmybash() {
     git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 }
 
-function update_ohmybash {
+update_ohmybash() {
 	upgrade_oh_my_bash
 }
 
-function uninstall_ohmybash {
+uninstall_ohmybash() {
     uninstall_oh_my_bash 
 }
 
