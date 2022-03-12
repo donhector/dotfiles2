@@ -16,8 +16,6 @@ antigen bundle z
 antigen bundle docker
 antigen bundle docker-compose
 antigen bundle kubectl
-antigen bundle helm
-#antigen bundle aws
 
 
 # Bundles for zsh

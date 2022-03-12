@@ -39,3 +39,7 @@ command -v kubectl >/dev/null 2>&1 \
 ## Aws
 command -v aws >/dev/null 2>&1 \
   && complete -C "$(which aws_completer)" aws
+
+## Helm
+command -v helm >/dev/null 2>&1 \
+  && helm completion bash > /etc/bash_completion.d/helm

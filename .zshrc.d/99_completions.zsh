@@ -46,3 +46,7 @@ command -v kubectl >/dev/null 2>&1 \
 command -v aws >/dev/null 2>&1 \
   && complete -C $(which aws_completer) aws
 
+
+## helm
+command -v helm >/dev/null 2>&1 \
+  && helm completion zsh > ~/.zfunc/_helm
