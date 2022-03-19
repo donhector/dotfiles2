@@ -42,8 +42,12 @@ command -v aws >/dev/null 2>&1 \
 
 ## Helm
 command -v helm >/dev/null 2>&1 \
-  && helm completion bash > /etc/bash_completion.d/helm
+  && source <(helm completion bash) # > /etc/bash_completion.d/helm
 
 ## Grype
 command -v grype >/dev/null 2>&1 \
   && source <(grype completion bash)
+
+## Poetry
+command -v poetry >/dev/null 2>&1 \
+  && source <(poetry completions bash)

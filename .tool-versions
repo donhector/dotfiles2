@@ -17,3 +17,6 @@ grype 0.33.1
 dockle 0.4.5
 checkov 2.0.929
 trivy 0.24.2
+opa 0.38.0
+helm 3.8.1
+poetry 1.1.13

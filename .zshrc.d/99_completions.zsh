@@ -53,3 +53,7 @@ command -v helm >/dev/null 2>&1 \
 ## grype
 command -v grype >/dev/null 2>&1 \
   && grype completion zsh > ~/.zfunc/_grype
+
+## poetry
+command -v poetry >/dev/null 2>&1 \
+  && poetry completions zsh > ~/.zfunc/_poetry
