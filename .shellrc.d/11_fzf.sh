@@ -15,13 +15,15 @@ export FZF_HOME="$(fzf_home)"
 
 
 ### Customize fzf settings
+EXCLUDE_ARGS='--exclude .git --exclude node_modules --exclude .npm --exclude .cache --exclude .vscode-server --exclude .venv --exclude .local'
+FD_OPTS="--hidden --follow ${EXCLUDE_ARGS}"
 
 fzf_compgen_path() {
-  fd --exclude ".git" --follow --hidden . "$1"
+  fd "${FD_OPTS}" . "$1"
 }
 
 fzf_compgen_dir() {
-  fd --exclude ".git" --follow --hidden --type d . "$1"
+  fd "${FD_OPTS}" --type d . "$1"
 }
 
 _fzf_comprun() {
@@ -37,8 +39,7 @@ _fzf_comprun() {
 }
 
 # Setting fd as the default source for fzf as it's faster an easier than 'find'
-# Tell fd to follow symlinks and show hidden stuff except .git directories
-FD_OPTS="--hidden --follow --exclude .git --exclude node_modules --exclude .npm"
+# Tell fd to follow symlinks and show hidden stuff except a few directories
 export FZF_CTRL_T_COMMAND="fd ${FD_OPTS}"
 export FZF_ALT_C_COMMAND="fd ${FD_OPTS} --type d"
 export FZF_DEFAULT_COMMAND="${FZF_CTRL_T_COMMAND}"
