@@ -15,8 +15,16 @@ export FZF_HOME="$(fzf_home)"
 
 
 ### Customize fzf settings
+
+# My custom fd folder exclusions
 EXCLUDE_ARGS='--exclude .git --exclude node_modules --exclude .npm --exclude .cache --exclude .vscode-server --exclude .venv --exclude .local'
-FD_OPTS="--hidden --follow ${EXCLUDE_ARGS}"
+
+# Default fd options
+# - Show hidden files
+# - Follow symlinks
+# - Respects .gitignore even on non git repos (those without a .git folder)
+# - Exclude certain folders regardless of .gitignore presence 
+FD_OPTS="--hidden --follow --ignore-file .gitignore ${EXCLUDE_ARGS}"
 
 fzf_compgen_path() {
   fd "${FD_OPTS}" . "$1"
@@ -40,9 +48,9 @@ _fzf_comprun() {
 
 # Setting fd as the default source for fzf as it's faster an easier than 'find'
 # Tell fd to follow symlinks and show hidden stuff except a few directories
-export FZF_CTRL_T_COMMAND="fd ${FD_OPTS}"
-export FZF_ALT_C_COMMAND="fd ${FD_OPTS} --type d"
-export FZF_DEFAULT_COMMAND="${FZF_CTRL_T_COMMAND}"
+export FZF_DEFAULT_COMMAND="fd ${FD_OPTS}"
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 export FZF_COMPLETION_TRIGGER='\'
 export FZF_DEFAULT_OPTS="\
   --height 80% \
