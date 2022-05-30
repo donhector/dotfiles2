@@ -40,3 +40,6 @@ PROMPT_COMMAND='history -a'
 # History settings
 HISTSIZE=1000000
 HISTFILESIZE=1000000
+
+# Facilitate connection to my remote KVM server
+export LIBVIRT_DEFAULT_URI='qemu+ssh://hector@xeon.lan/system'

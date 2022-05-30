@@ -241,3 +241,22 @@ asdfi(){
             'asdf install % @ && printf \"global\nlocal\nshell\" | fzf | xargs -r -I{} asdf {} % @ \
             && asdf reshim %'"
 }
+
+## Kubernetes home lab stuff
+k8s_get_config(){
+    local user_host=${1:-"$USER@xeon"}
+    scp "${user_host}:~/.kube/config" ~/.kube/config
+}
+
+k8s_start_tunnel(){
+    k8s_stop_tunnel
+    ssh -fNT -L 6443:k8s.home.lab:6443 hector@xeon && \
+    echo ssh tunnel started. || \
+    echo Error starting SSH tunnel.
+}
+
+k8s_stop_tunnel(){
+    pkill -TERM -f 'ssh -fNT' -e && \
+        echo ssh tunnel was stopped. || \
+        echo ssh tunnel was not running.
+}

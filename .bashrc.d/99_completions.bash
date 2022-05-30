@@ -51,3 +51,12 @@ command -v grype >/dev/null 2>&1 \
 ## Poetry
 command -v poetry >/dev/null 2>&1 \
   && source <(poetry completions bash)
+
+## pip
+command -v pip >/dev/null 2>&1 \
+  && eval "$(pip completion --bash)" \
+  && complete -F _pip_completion pip3
+
+## pipenv
+command -v pipenv >/dev/null 2>&1 \
+  && eval "$(_PIPENV_COMPLETE=bash_source pipenv)"

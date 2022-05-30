@@ -33,7 +33,7 @@ command -v rg >/dev/null 2>&1 \
   && cp "$(asdf where ripgrep)/complete/_rg" ~/.zfunc/
 
 ## Fd
-command -v rg >/dev/null 2>&1 \
+command -v fd >/dev/null 2>&1 \
   && cp "$(asdf where fd)/autocomplete/_fd" ~/.zfunc/
 
 ## Kubectl
@@ -57,3 +57,16 @@ command -v grype >/dev/null 2>&1 \
 ## poetry
 command -v poetry >/dev/null 2>&1 \
   && poetry completions zsh > ~/.zfunc/_poetry
+
+## pip
+command -v pip >/dev/null 2>&1 \
+  && eval "$(pip completion --zsh)" \
+  && compctl -K _pip_completion pip3
+
+## pipenv
+command -v pipenv >/dev/null 2>&1 \
+  && eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
+
+# ## krew
+# command -v kubectl-krew >/dev/null 2>&1 \
+#   && kubectl-krew completion zsh > ~/.zfunc/_krew

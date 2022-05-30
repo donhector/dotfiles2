@@ -17,14 +17,13 @@ export FZF_HOME="$(fzf_home)"
 ### Customize fzf settings
 
 # My custom fd folder exclusions
-EXCLUDE_ARGS='--exclude .git --exclude node_modules --exclude .npm --exclude .cache --exclude .vscode-server --exclude .venv --exclude .local'
+EXCLUDE_ARGS='-E .git -E node_modules -E .npm -E .cache -E .vscode-server -E .venv -E .local'
 
 # Default fd options
 # - Show hidden files
 # - Follow symlinks
-# - Respects .gitignore even on non git repos (those without a .git folder)
 # - Exclude certain folders regardless of .gitignore presence 
-FD_OPTS="--hidden --follow --ignore-file .gitignore ${EXCLUDE_ARGS}"
+FD_OPTS="--hidden --follow ${EXCLUDE_ARGS}"
 
 fzf_compgen_path() {
   fd "${FD_OPTS}" . "$1"

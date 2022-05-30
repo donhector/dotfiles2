@@ -6,3 +6,5 @@ alias fc="fc -i"
 
 # Global alias to pipe to fzf. ie 'ls Z'
 alias -g Z='| fzf'
+alias -g Y='| yq'
+alias -g J='| jq'
