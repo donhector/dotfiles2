@@ -10,24 +10,23 @@ antigen bundle colored-man-pages
 antigen bundle git-extras       # requires 'apt install git-extras'
 antigen bundle web-search
 antigen bundle z    # usage: 'z <partial directory name>''
+antigen bundle docker
 antigen bundle docker-compose
-# antigen bundle docker
-# antigen bundle kubectl    # chitoku-k provides some function
-antigen bundle kube-ps1 # Provides showing namespace and context in PS1
+antigen bundle kubectl    # chitoku-k provides some function
 
 # Bundles for zsh
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zdharma-mirror/fast-syntax-highlighting --branch=main
 
-# # Additonal bundles
+# Additonal bundles
 antigen bundle darvid/zsh-poetry  # auto activate/deactivate poetry env and show it in prompt
-antigen bundle djui/alias-tips
+antigen bundle djui/alias-tips # hints the use of aliases
 antigen bundle Aloxaf/fzf-tab  # adds fzf <trigger><TAB> completion for almost everything
-antigen bundle wfxr/forgit
+antigen bundle wfxr/forgit  # adds git commands interactivity via fzf (ie: ga, glo, etc..)
 antigen bundle chitoku-k/fzf-zsh-completions  # adds fzf like completion for certain commands
 
-# Select zsh theme
-antigen theme candy # Customized version to include git, dir abbreviation and kube ps1
+# Command prompt theme to use. (NOTE: I use starship for managing my prompt, thus I keep these disabled)
+#antigen theme candy
 #antigen theme spaceship-prompt/spaceship-prompt
 #antigen theme romkatv/powerlevel10k
 

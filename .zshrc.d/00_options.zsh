@@ -32,6 +32,8 @@ setopt HIST_EXPIRE_DUPS_FIRST
 # ensure no dupes also in the history file (not just in memory)
 setopt HIST_IGNORE_ALL_DUPS
 
+# ensure no command is saved when the first character on the line is a space
+setopt HIST_IGNORE_SPACE
 
 # ===== Completion 
 

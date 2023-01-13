@@ -67,6 +67,10 @@ command -v pip >/dev/null 2>&1 \
 command -v pipenv >/dev/null 2>&1 \
   && eval "$(_PIPENV_COMPLETE=zsh_source pipenv)"
 
-# ## krew
-# command -v kubectl-krew >/dev/null 2>&1 \
-#   && kubectl-krew completion zsh > ~/.zfunc/_krew
+## krew
+command -v kubectl-krew >/dev/null 2>&1 \
+  && kubectl-krew completion zsh > ~/.zfunc/_krew
+
+## starship
+command -v starship >/dev/null 2>&1 \
+  && starship completions zsh > ~/.zfunc/_starship

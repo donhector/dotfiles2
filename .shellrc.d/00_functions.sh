@@ -19,6 +19,12 @@ mkcdtmp() {
 cdls() { cd "$@" && ls -Fa --color=auto; }
 
 ## Colored output for scripts
+
+# Colormap
+colormap() {
+    for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+}
+
 # colored echo
 cecho() {
     color=$1
@@ -214,7 +220,7 @@ fif() {
 }
 
 aptz() {
-    apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1}' | xargs -r sudo apt install -y
+    apt-cache search '' | sort | cut --delimiter ' ' --fields 1 | fzf --multi --cycle --reverse --preview 'apt-cache show {1} | bat -l yaml --color=always' | xargs -r sudo apt install -y
 }
 
 # Better man pages for the given command
@@ -259,4 +265,15 @@ k8s_stop_tunnel(){
     pkill -TERM -f 'ssh -fNT' -e && \
         echo ssh tunnel was stopped. || \
         echo ssh tunnel was not running.
+}
+
+## Weather report
+weather(){
+    local city=${1:-""}
+    curl "wttr.in/${city}"
+}
+
+## Set AWS profile
+asp(){
+    export AWS_PROFILE="$(aws configure list-profiles | fzf --cycle --no-multi)"
 }

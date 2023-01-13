@@ -1,5 +1,5 @@
 ### SHELL agnostic aliases
- 
+
 # ls aliases
 alias l="ls -CF"     # show hidden and alpha ordered
 alias ll="ls -lh"
@@ -113,10 +113,11 @@ alias ghpr='gh pr create --fill -a @me'
 alias gph='git push -u origin HEAD'
 alias c='git cz commit'
 
-
 ## Ripgrep aliases
 alias rgf='rg --files --hidden | rg'
 
 ## Hosts
 alias xeon='ssh hector@xeon.lan'
 alias openwrt='ssh root@openwrt.lan'
+
+## Additional aliases might be introduced via antigen plugins, such as those for git and kubectl
