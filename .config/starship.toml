@@ -7,17 +7,21 @@
 # Inserts a blank line between shell prompts
 add_newline = true
 
+# Timeout for commands executed by starship (in milliseconds).
+command_timeout = 1000
+
 # Prompt order
 format = """
 $os\
 $username\
 $hostname\
-$sudo\
 $time\
+$sudo\
 $jobs\
 $shlvl\
 $directory\
 $git_branch\
+${custom.git_status}\
 $git_commit\
 $git_state\
 $git_status\
@@ -31,6 +35,7 @@ $helm\
 $kubernetes\
 $aws\
 $cmd_duration\
+$fill\
 $line_break\
 $character"""
 
@@ -38,13 +43,10 @@ $character"""
 # prompt settings
 ########################################
 
-[docker_context]
-disabled = false
-
 [os]
+disabled = false
 format = '[$symbol]($style)'
 style = 'bold white'
-disabled = false
 
 [os.symbols]
 Alpine = " "
@@ -85,42 +87,71 @@ Unknown = "ﲾ "
 Windows = "者 "
 
 [username]
-disabled = false
+disabled = true
 show_always = true
 style_user = "cyan bold"
 style_root = "red bold"
 format = "[$user]($style)"
 
+
 [hostname]
 disabled = false
-ssh_only = false
+ssh_only = true
 format = '[[@](cyan dimmed)$hostname](bold cyan) '
 
 [sudo]
-disabled = false
+disabled = true
 format = '🧙 '
 
 [time]
-disabled = false
+disabled = true
 format = '[\[$time\] ]($style)'
 style = "bold black"
 utc_time_offset = "+1"
 
 [directory]
-format = '[\[$path\]]($style)[(\[$read_only\]) ]($read_only_style)'
+disabled = false
+format = '[$path]($style)[($read_only)]($read_only_style)($style) '
 truncation_length = 2
 truncate_to_repo = true
-truncation_symbol = '.../'
-style = "white"
+truncation_symbol = '…/'
+style = 'bold white'
+read_only = '!'
+read_only_style = 'red'
 
 [git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style) '
+disabled = false
+format = '[$symbol$branch(:$remote_branch)]($style)'
 style = 'bold yellow'
-truncation_length = 100
-truncation_symbol = '...'
+truncation_length = 20
+
+
+[git_status]
+disabled = false
+format = '([\($all_status$ahead_behind\)]($style)) '
+style = "grey bold"
+modified = '[${count}!](cyan)'
+staged = '[${count}+](green)'
+untracked = '[${count}?](purple)'
+stashed = '[${count}≡](gray)'
+deleted = '[${count}✘](red)'
+renamed = "[${count}»](blue)"
+
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+conflicted = ' '
+
+[custom.git_status]
+disabled = false
+when = 'test -n "$(git status --porcelain)"'
+symbol = '*'
+style = 'yellow dimmed'
+format = '[$symbol]($style) '
 
 [jobs]
-symbol = '👷'
+disabled = false
+symbol = ' '
 threshold = 1
 
 [python]
@@ -128,7 +159,11 @@ disabled = false
 version_format = "v${major}.${minor}"
 format = '[${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
 
+[docker_context]
+disabled = false
+
 [terraform]
+disabled = false
 format = '[[$symbol](bold #9b60e3) ($workspace) [(\($version\))](bold #5e3a8a)](bold #8150bd) '
 symbol = ' '
 
@@ -139,12 +174,12 @@ symbol = 'ﴱ'
 
 # [kubernetes]
 # disabled = false
-# format = '[[$symbol](bold #465fff) ($cluster)[(|$namespace)](bold #2f51ae)](bold #3e6ae1) '
+# format = '[[$symbol](bold #376bff) ($cluster)[(|$namespace)](bold #2f51ae)](bold #3e6ae1) '
 # symbol = 'ﴱ'
 
 [aws]
 disabled = false
-format = '[[$symbol](#86abff) ($profile)[(|$region)](bold #566ea3)](#6a87c9) '
+format = '[[$symbol](#86abff) ($profile)[(|$region)](bold #566ea3)](bold #6a87c9) '
 symbol = ''
 
 # [aws]
@@ -160,6 +195,7 @@ darkenv = 'darkenv'
 # us-east-1 = 'va'
 
 [fill]
+disabled = false
 symbol = ' '
 
 [character]

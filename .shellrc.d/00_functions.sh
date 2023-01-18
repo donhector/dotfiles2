@@ -277,3 +277,9 @@ weather(){
 asp(){
     export AWS_PROFILE="$(aws configure list-profiles | fzf --cycle --no-multi)"
 }
+
+
+t(){
+    local name=${1:-"$(basename $PWD)"}
+    tmux attach-session -t "${name}" 2>/dev/null || tmux new -s "${name}"
+}

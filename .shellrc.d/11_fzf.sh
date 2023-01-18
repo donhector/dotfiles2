@@ -25,32 +25,12 @@ EXCLUDE_ARGS='-E .git -E node_modules -E .npm -E .cache -E .vscode-server -E .ve
 # - Exclude certain folders regardless of .gitignore presence 
 FD_OPTS="--hidden --follow ${EXCLUDE_ARGS}"
 
-fzf_compgen_path() {
-  fd "${FD_OPTS}" . "$1"
-}
-
-fzf_compgen_dir() {
-  fd "${FD_OPTS}" --type d . "$1"
-}
-
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf "$@" --preview 'tree -C {} | head -200' ;;
-    export|unset) fzf "$@" --preview "eval 'echo \$'{}" ;;
-    ssh)          fzf "$@" --preview 'dig {}' ;;
-    *)            fzf "$@" ;;
-  esac
-}
-
 # Setting fd as the default source for fzf as it's faster an easier than 'find'
 # Tell fd to follow symlinks and show hidden stuff except a few directories
 export FZF_DEFAULT_COMMAND="fd ${FD_OPTS}"
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
-export FZF_COMPLETION_TRIGGER='\'
+export FZF_COMPLETION_TRIGGER='**'
 export FZF_DEFAULT_OPTS="\
   --height 80% \
   --layout reverse \
@@ -65,3 +45,14 @@ export FZF_DEFAULT_OPTS="\
   --bind '?:toggle-preview' \
   --preview '([[ -f {} ]] && (bat --style=numbers --color=always --line-range :500 {} || cat {} | head -300)) || ([[ -d {} ]] && (tree -aC -I .git {} | less)) || echo {} 2> /dev/null | head -200' \
   "
+
+
+# Configure fzf to use 'fd' instead of the slower 'find' for file and directory searches 
+fzf_compgen_path() {
+  fd "${FD_OPTS}" . "$1"
+}
+
+# Configure fzf to use 'fd' instead of the slower 'find' for directory searches 
+fzf_compgen_dir() {
+  fd "${FD_OPTS}" --type d . "$1"
+}

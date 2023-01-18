@@ -19,3 +19,8 @@ hash starship 2>/dev/null || install_starship
 
 # Initialize it
 eval "$(starship init "${SHELL}")"
+
+# Enables or disbales specific modules from displaying
+stoggle(){
+    starship toggle "${1}"
+}
