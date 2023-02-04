@@ -1,0 +1,61 @@
+hotKey:
+  Shift-1:
+    shortCut: Shift-1
+    description: View pods
+    command: pods
+  Shift-2:
+    shortCut: Shift-2
+    description: View deployments
+    command: dp
+  Shift-3:
+    shortCut: Shift-3
+    description: View statefulsets
+    command: sts
+  Shift-4:
+    shortCut: Shift-4
+    description: View daemonsets
+    command: ds
+  Shift-5:
+    shortCut: Shift-5
+    description: View services
+    command: service
+  Shift-6:
+    shortCut: Shift-6
+    description: View ingresses
+    command: ingress
+  Shift-7:
+    shortCut: Shift-7
+    description: View claims
+    command: pvc
+  Shift-8:
+    shortCut: Shift-8
+    description: View volumes
+    command: pv
+  Shift-9:
+    shortCut: Shift-9
+    description: View configmaps
+    command: cm
+  Shift-0:
+    shortCut: Shift-0
+    description: View secrets
+    command: secrets
+  Shift-q:
+    shortCut: Shift-Q
+    description: Quit
+    command: quit
+  F1:
+    shortCut: F1
+    description: View contexts
+    command: contexts
+  F2:
+    shortCut: F2
+    description: View nodes
+    command: nodes
+  F3:
+    shortCut: F3
+    description: View events
+    command: events
+  F4:
+    shortCut: F4
+    description: Xray deployment
+    command: xray deploy
