@@ -129,4 +129,4 @@ alias kcrsvc='kubectl create service nodeport firstpod --tcp=80:8080 --node-port
 alias kcrj='kubectl create job myjob --image=busybox:latest --namespace default --dry-run=client -o yaml'
 alias kcrcj='kubectl create cronjob mycronjob --image=alpine:latest --schedule="* * * * *" --namespace default --dry-run=client -o yaml'
 alias kcrsa='kubectl create serviceaccount foo --namespace default --dry-run=client -o yaml'
-alias kcrro='kubectl create role foo --verb get,list,watch --resource po,cm --namespace default --dry-run=client -o yaml'
+alias kcrro='kubectl create role foo --verb get,list,watch,create,update,patch,delete --resource po,cm --namespace default --dry-run=client -o yaml'
