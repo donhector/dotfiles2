@@ -121,3 +121,11 @@ alias xeon='ssh hector@xeon.lan'
 alias openwrt='ssh root@openwrt.lan'
 
 ## Additional aliases might be introduced via antigen plugins, such as those for git and kubectl
+
+## Kubernetes imperative dry-run command examples
+alias kcrpo='kubectl run nginx --image=nginx --labels app=nginx --annotations key=value --env FOO=BAR --namespace default --dry-run=client -o yaml'
+alias kcrdp='kubectl create deployment nginx --image nginx --replicas 3 --port 8080 --namespace default --dry-run=client -o yaml'
+alias kcrsvc='kubectl create service nodeport firstpod --tcp=80:8080 --node-port=31001 --namespace default --dry-run=client -o yaml'
+alias kcrj='kubectl create job myjob --image=busybox:latest --namespace default --dry-run=client -o yaml'
+alias kcrcj='kubectl create cronjob mycronjob --image=alpine:latest --schedule="* * * * *" --namespace default --dry-run=client -o yaml'
+alias kcrsa='kubectl create serviceaccount foo --namespace default --dry-run=client -o yaml'
